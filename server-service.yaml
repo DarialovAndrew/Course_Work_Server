@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    io.kompose.service: courseserver
+  name: courseserver
+spec:
+  type: LoadBalancer
+  ports:
+    - name: "8891"
+      port: 8891
+      targetPort: 8891
+      nodePort: 30164
+      protocol: TCP
+  selector:
+    io.kompose.service: courseserver
+status:
+  loadBalancer: {}

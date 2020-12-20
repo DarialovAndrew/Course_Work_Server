@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: courseserver
+  name: courseserver
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      io.kompose.service: courseserver
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        io.kompose.service: courseserver
+    spec:
+      containers:
+        - image: andrewdarialov/courseserver:latest
+          imagePullPolicy: ""
+          name: courseserver
+          ports:
+            - containerPort: 8891
+          resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+status: {}
